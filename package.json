@@ -1,0 +1,17 @@
+{
+  "name": "screengrab_android_store",
+  "version": "0.0.1",
+  "description": "A small tool to grab images from the different stores from around the world.",
+  "main": "index.js",
+  "scripts": {
+    "test": "npm test"
+  },
+  "author": "Stephan Rebolledo <stephan@bow3.com>",
+  "license": "ISC",
+  "dependencies": {
+    "async": "^2.5.0",
+    "minimist": "^1.2.0",
+    "request": "^2.81.0",
+    "webshot": "^0.18.0"
+  }
+}
