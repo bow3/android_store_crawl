@@ -3,7 +3,7 @@ let argv = require('minimist')(process.argv.slice(2));
 let request = require('request');
 let webshot = require('webshot');
 let async = require('async');
-let baseUrl = argv.baseUrl;
+let baseUrl = argv.baseUrl ? argv.baseUrl : "https://play.google.com/store/apps/collection/promotion_3000791_new_releases_games\?gl\=";
 let fs = require('fs');
 let finished = true;
 let found = {
@@ -36,12 +36,14 @@ let getPicture = function getPicture(country, countryCode, callback) {
                     if (err){
                         console.error(err);
                     }
-                    console.log("screenshot saved!");
+                    console.log("Screenshot saved for " + country +"!");
                     finished = false;
                     return callback(null);
                 });
             }
-            return callback();
+            else {
+                return callback();
+            }
         }
         else {
             console.log(argv.game +" NOT found in " + country + " :-(");
@@ -62,7 +64,7 @@ async.parallel(functions, function (error) {
     if (error) {
         console.log(error);
     }
-    console.log("Done");
+    console.log("Done, check files fount.txt and notFound.txt.");
     fs.writeFileSync("found.txt", found.found.join("\n"));
     fs.writeFileSync("notFound.txt", found.notFound.join("\n"));
 });
